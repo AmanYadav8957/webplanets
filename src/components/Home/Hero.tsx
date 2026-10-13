@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigate?: (page: 'home' | 'shop') => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <section className="relative h-[650px] flex items-center bg-[url('/hero-bg.jpg')] bg-cover bg-center">
       {/* Solid blue/grey translucent overlay matching the reference image */}
@@ -15,8 +19,15 @@ const Hero: React.FC = () => {
           Discover reliable printers, professional printing solutions, and expert assistance designed for homes, offices, and businesses.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <button className="inline-block w-full sm:w-auto text-center py-3 px-8 rounded-xl font-bold text-[15px] uppercase tracking-wide transition-all duration-300 bg-[#12213d] text-white hover:bg-[#1a2f55] border-none">EXPLORE PRINTERS</button>
-          <button className="inline-block w-full sm:w-auto text-center py-3 px-8 rounded-xl font-bold text-[15px] uppercase tracking-wide transition-all duration-300 bg-[#12213d] text-white hover:bg-[#1a2f55] border-none">CONTACT US</button>
+          <button 
+            onClick={() => onNavigate?.('shop')}
+            className="inline-block w-full sm:w-auto text-center py-3 px-8 rounded-xl font-bold text-[15px] uppercase tracking-wide transition-all duration-300 bg-[#12213d] text-white hover:bg-[#1a2f55] border-none cursor-pointer"
+          >
+            EXPLORE PRINTERS
+          </button>
+          <button className="inline-block w-full sm:w-auto text-center py-3 px-8 rounded-xl font-bold text-[15px] uppercase tracking-wide transition-all duration-300 bg-[#12213d] text-white hover:bg-[#1a2f55] border-none cursor-pointer">
+            CONTACT US
+          </button>
         </div>
       </div>
     </section>

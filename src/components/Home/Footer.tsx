@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (page: 'home' | 'shop') => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-[#51647a] text-white pt-16 pb-5">
       <div className="max-w-[1200px] mx-auto px-5">
@@ -8,8 +12,22 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-base font-bold mb-5">Quick Links</h4>
             <ul className="list-none space-y-2">
-              <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">Home</a></li>
-              <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">Shop</a></li>
+              <li>
+                <button 
+                  onClick={() => onNavigate?.('home')}
+                  className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white bg-transparent border-none p-0 cursor-pointer"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate?.('shop')}
+                  className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white bg-transparent border-none p-0 cursor-pointer"
+                >
+                  Shop
+                </button>
+              </li>
               <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">About Us</a></li>
               <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">FAQ</a></li>
               <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">Track Orders</a></li>
