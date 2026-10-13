@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
+import { CartProvider } from './context/CartContext';
+import CartDrawer from './components/Cart/CartDrawer';
 
 const App: React.FC = () => {
   const parseHash = () => {
@@ -55,22 +57,30 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="app">
-      {currentPage === 'product' ? (
-        <ProductDetail
-          productId={selectedProductId}
-          onNavigate={navigate}
-          onSelectProduct={handleSelectProduct}
+    <CartProvider>
+      <div className="app">
+        {currentPage === 'product' ? (
+          <ProductDetail
+            productId={selectedProductId}
+            onNavigate={navigate}
+            onSelectProduct={handleSelectProduct}
+          />
+        ) : currentPage === 'shop' ? (
+          <Shop
+            onNavigate={navigate}
+            onSelectProduct={handleSelectProduct}
+          />
+        ) : (
+          <Home onNavigate={navigate} />
+        )}
+
+        {/* Global Slide-over Cart Drawer */}
+        <CartDrawer
+          onNavigateToProduct={handleSelectProduct}
+          onNavigateToShop={() => navigate('shop')}
         />
-      ) : currentPage === 'shop' ? (
-        <Shop
-          onNavigate={navigate}
-          onSelectProduct={handleSelectProduct}
-        />
-      ) : (
-        <Home onNavigate={navigate} />
-      )}
-    </div>
+      </div>
+    </CartProvider>
   );
 };
 

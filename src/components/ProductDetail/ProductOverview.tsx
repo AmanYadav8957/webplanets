@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { ProductDetail } from './types';
+import { useCart } from '../../context/CartContext';
 
 interface ProductOverviewProps {
   product: ProductDetail;
@@ -8,11 +9,19 @@ interface ProductOverviewProps {
 
 const ProductOverview: React.FC<ProductOverviewProps> = ({ product, onNavigate }) => {
   const [quantity, setQuantity] = useState(1);
-  const [addedNotice, setAddedNotice] = useState(false);
+  const { addToCart, openCart } = useCart();
 
   const handleAddToCart = () => {
-    setAddedNotice(true);
-    setTimeout(() => setAddedNotice(false), 3000);
+    addToCart(
+      {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+      },
+      quantity
+    );
+    openCart();
   };
 
   return (
@@ -87,12 +96,6 @@ const ProductOverview: React.FC<ProductOverviewProps> = ({ product, onNavigate }
           Add To Cart
         </button>
       </div>
-
-      {addedNotice && (
-        <div className="mb-6 p-2.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded">
-          Added {quantity} × "{product.title}" to cart!
-        </div>
-      )}
 
       {/* Product Meta (SKU, Category, Tag) */}
       <div className="border-t border-gray-100 pt-5 flex flex-col gap-1.5 text-[12.5px] text-gray-600">
