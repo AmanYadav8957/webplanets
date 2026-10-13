@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
-import { CartProvider } from './context/CartContext';
-import CartDrawer from './components/Cart/CartDrawer';
+import { CartProvider, CartDrawer } from './components/Cart';
 
 const App: React.FC = () => {
   const parseHash = () => {

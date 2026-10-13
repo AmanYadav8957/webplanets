@@ -4,7 +4,7 @@ import ShopBanner from '../components/Shop/ShopBanner';
 import ShopSidebar from '../components/Shop/ShopSidebar';
 import ProductGrid from '../components/Shop/ProductGrid';
 import Pagination from '../components/Shop/Pagination';
-import FloatingCart from '../components/Shop/FloatingCart';
+import FloatingCart from '../components/Cart/FloatingCart';
 import Footer from '../components/Home/Footer';
 import { allProducts } from '../components/Shop/productsData';
 import type { SortOption } from '../components/Shop/types';

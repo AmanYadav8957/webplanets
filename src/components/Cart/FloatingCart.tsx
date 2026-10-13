@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCart } from '../../context/CartContext';
+import { useCart } from './CartContext';
 
 const FloatingCart: React.FC = () => {
   const { totalCount, openCart } = useCart();

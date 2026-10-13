@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useCart } from '../../context/CartContext';
+import { useCart } from './CartContext';
 
 interface CartDrawerProps {
   onNavigateToProduct?: (productId: string) => void;

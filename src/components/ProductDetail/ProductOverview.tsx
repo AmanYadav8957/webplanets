@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { ProductDetail } from './types';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../Cart/CartContext';
 
 interface ProductOverviewProps {
   product: ProductDetail;

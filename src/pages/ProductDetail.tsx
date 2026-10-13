@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Header from '../components/auth/Header';
 import Footer from '../components/Home/Footer';
-import FloatingCart from '../components/Shop/FloatingCart';
+import FloatingCart from '../components/Cart/FloatingCart';
 import ProductGallery from '../components/ProductDetail/ProductGallery';
 import ProductOverview from '../components/ProductDetail/ProductOverview';
 import ProductSpecsTable from '../components/ProductDetail/ProductSpecsTable';
