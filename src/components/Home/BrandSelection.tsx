@@ -1,5 +1,4 @@
-import React from 'react';
-import type { BrandId } from '../../data/brandSetupData';
+import type { BrandId } from '../BrandSetup';
 
 interface BrandSelectionProps {
   onSelectBrand?: (brand: BrandId) => void;

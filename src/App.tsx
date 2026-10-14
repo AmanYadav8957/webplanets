@@ -4,7 +4,7 @@ import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import BrandSetup from './pages/BrandSetup';
 import { CartProvider, CartDrawer } from './components/Cart';
-import type { BrandId } from './data/brandSetupData';
+import type { BrandId } from './components/BrandSetup';
 
 const App: React.FC = () => {
   const parseHash = () => {

@@ -10,7 +10,7 @@ import Products from '../components/Home/Products';
 import Mission from '../components/Home/Mission';
 import FinalCta from '../components/Home/FinalCta';
 import Footer from '../components/Home/Footer';
-import type { BrandId } from '../data/brandSetupData';
+import type { BrandId } from '../components/BrandSetup';
 
 interface HomeProps {
   onNavigate?: (page: 'home' | 'shop') => void;
