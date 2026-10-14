@@ -1,5 +1,8 @@
 export { default as BrandSubBar } from './BrandSubBar';
 export { default as SetupHeroBanner } from './SetupHeroBanner';
+export { default as DownloadHeroBanner } from './DownloadHeroBanner';
+export { default as DownloadDriversModal, type DriverFormData } from './DownloadDriversModal';
+export { default as InstallationErrorCard } from './InstallationErrorCard';
 export { default as SetupSupportForm } from './SetupSupportForm';
 export { default as SetupInstructions } from './SetupInstructions';
 export { default as BrandSwitcher } from './BrandSwitcher';

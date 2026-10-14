@@ -21,4 +21,8 @@ export interface BrandSetupConfig {
   showSupportLink?: boolean;
   supportLinkText?: string;
   sampleModels: string[];
+  softwareName: string;
+  downloadPrinterImage: string;
+  supportPhone: string;
+  brandColor: string;
 }

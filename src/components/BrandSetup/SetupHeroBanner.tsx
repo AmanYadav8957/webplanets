@@ -3,13 +3,12 @@ import type { BrandSetupConfig } from './types';
 
 interface SetupHeroBannerProps {
   config: BrandSetupConfig;
+  onNext?: (model: string) => void;
 }
 
-const SetupHeroBanner: React.FC<SetupHeroBannerProps> = ({ config }) => {
+const SetupHeroBanner: React.FC<SetupHeroBannerProps> = ({ config, onNext }) => {
   const [productQuery, setProductQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [searchStatus, setSearchStatus] = useState<'idle' | 'searching' | 'found'>('idle');
-  const [activeModel, setActiveModel] = useState('');
 
   const filteredModels = config.sampleModels.filter((model) =>
     model.toLowerCase().includes(productQuery.toLowerCase())
@@ -17,25 +16,14 @@ const SetupHeroBanner: React.FC<SetupHeroBannerProps> = ({ config }) => {
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!productQuery.trim()) return;
-
-    setSearchStatus('searching');
-    setActiveModel(productQuery.trim());
-    setShowSuggestions(false);
-
-    setTimeout(() => {
-      setSearchStatus('found');
-    }, 800);
+    const model = productQuery.trim() || config.sampleModels[0];
+    onNext?.(model);
   };
 
   const handleSelectSuggestion = (model: string) => {
     setProductQuery(model);
-    setActiveModel(model);
     setShowSuggestions(false);
-    setSearchStatus('searching');
-    setTimeout(() => {
-      setSearchStatus('found');
-    }, 600);
+    onNext?.(model);
   };
 
   return (
@@ -77,7 +65,6 @@ const SetupHeroBanner: React.FC<SetupHeroBannerProps> = ({ config }) => {
                     onChange={(e) => {
                       setProductQuery(e.target.value);
                       setShowSuggestions(true);
-                      if (searchStatus === 'found') setSearchStatus('idle');
                     }}
                     onFocus={() => setShowSuggestions(true)}
                     placeholder="Enter Your product Name Here"
@@ -98,7 +85,7 @@ const SetupHeroBanner: React.FC<SetupHeroBannerProps> = ({ config }) => {
                           className="w-full text-left px-3.5 py-2.5 text-[13.5px] hover:bg-gray-100 transition-colors flex items-center justify-between border-none bg-transparent cursor-pointer text-gray-700"
                         >
                           <span>{model}</span>
-                          <span className="text-[11px] text-blue-600 font-medium">Select</span>
+                          <span className="text-[11px] text-blue-600 font-medium">Select & Next &rarr;</span>
                         </button>
                       ))}
                     </div>
@@ -109,56 +96,9 @@ const SetupHeroBanner: React.FC<SetupHeroBannerProps> = ({ config }) => {
                   type="submit"
                   className={`px-8 py-3 rounded text-[14px] font-bold uppercase tracking-wider text-white ${config.buttonBg} ${config.buttonHoverBg} transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer border-none flex items-center justify-center gap-2`}
                 >
-                  {searchStatus === 'searching' ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                      </svg>
-                      <span>LOCATING...</span>
-                    </>
-                  ) : (
-                    'NEXT'
-                  )}
+                  NEXT
                 </button>
               </form>
-
-              {/* Search result notification */}
-              {searchStatus === 'found' && (
-                <div className="mt-4 p-4 bg-white/95 text-gray-900 rounded-lg shadow-lg border border-white/40 text-left animate-fadeIn">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-[14px] font-bold text-gray-900 m-0">
-                        Found Setup Driver for: {activeModel}
-                      </h4>
-                      <p className="text-[12.5px] text-gray-600 mt-1 mb-2.5">
-                        Latest driver package detected for your operating system. Ready for installation.
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <button
-                          type="button"
-                          onClick={() => alert(`Starting download of official setup assistant for ${activeModel}...`)}
-                          className="px-3.5 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[12px] font-semibold border-none cursor-pointer transition-colors shadow-sm"
-                        >
-                          Download Setup Driver
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setSearchStatus('idle')}
-                          className="px-3 py-1.5 rounded bg-gray-200 hover:bg-gray-300 text-gray-700 text-[12px] font-medium border-none cursor-pointer transition-colors"
-                        >
-                          Dismiss
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 

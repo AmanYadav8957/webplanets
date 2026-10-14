@@ -27,7 +27,11 @@ export const brandSetupConfigs: Record<BrandId, BrandSetupConfig> = {
       'HP Smart Tank 5105 All-in-One',
       'HP ENVY Inspire 7220e All-in-One',
       'HP LaserJet M110w Wireless Printer'
-    ]
+    ],
+    softwareName: 'HP Smart',
+    downloadPrinterImage: '/setup/download_printer_chart.png',
+    supportPhone: '+1-888-908-4513',
+    brandColor: '#0085d0'
   },
   canon: {
     id: 'canon',
@@ -55,7 +59,11 @@ export const brandSetupConfigs: Record<BrandId, BrandSetupConfig> = {
       'Canon MegaTank G3270 All-in-One',
       'Canon MAXIFY GX7020 Wireless Small Office',
       'Canon imageCLASS MF264dw II'
-    ]
+    ],
+    softwareName: 'Canon PRINT',
+    downloadPrinterImage: '/setup/canon_content.png',
+    supportPhone: '+1-888-908-4513',
+    brandColor: '#c4161c'
   },
   brother: {
     id: 'brother',
@@ -81,7 +89,11 @@ export const brandSetupConfigs: Record<BrandId, BrandSetupConfig> = {
       'Brother HL-L3210CW Digital Color Printer',
       'Brother MFC-L2710DW Monochrome All-in-One',
       'Brother INKvestment Tank MFC-J4335DW'
-    ]
+    ],
+    softwareName: 'Brother iPrint&Scan',
+    downloadPrinterImage: '/setup/brother_content.png',
+    supportPhone: '+1-888-908-4513',
+    brandColor: '#002b66'
   },
   epson: {
     id: 'epson',
@@ -107,6 +119,10 @@ export const brandSetupConfigs: Record<BrandId, BrandSetupConfig> = {
       'Epson Expression Home XP-4200 Wireless',
       'Epson WorkForce Pro WF-3820 All-in-One',
       'Epson EcoTank Pro ET-5850'
-    ]
+    ],
+    softwareName: 'Epson Smart Panel',
+    downloadPrinterImage: '/setup/epson_hero.png',
+    supportPhone: '+1-888-908-4513',
+    brandColor: '#0f265c'
   }
 };
