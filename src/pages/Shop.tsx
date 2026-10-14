@@ -17,7 +17,7 @@ interface ShopProps {
 const Shop: React.FC<ShopProps> = ({ onNavigate, onSelectProduct }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [priceRange, setPriceRange] = useState<[number, number]>([80, 5130]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([50, 1710]);
   const [sortOption, setSortOption] = useState<SortOption>('default');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;

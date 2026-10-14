@@ -73,13 +73,13 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
           <div className="w-full h-1 bg-gray-200 rounded-full relative pointer-events-none">
             <div 
               className="absolute h-1 bg-gray-900 rounded-full left-0 top-0" 
-              style={{ width: `${Math.min(100, Math.max(0, ((maxPrice - 80) / (5130 - 80)) * 100))}%` }}
+              style={{ width: `${Math.min(100, Math.max(0, ((maxPrice - 50) / (1710 - 50)) * 100))}%` }}
             ></div>
           </div>
           <input 
             type="range" 
-            min="80" 
-            max="5130" 
+            min="50" 
+            max="1710" 
             value={maxPrice} 
             onChange={(e) => setMaxPrice(Number(e.target.value))}
             className="price-slider"
@@ -146,7 +146,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
                 selectedCategory === 'Small and Medium Office' ? 'text-[#0284c7] font-bold' : 'text-gray-700 hover:text-black font-normal'
               }`}
             >
-              <span className="truncate pr-2">Small and Medium Cl...</span>
+              <span className="truncate pr-2">Small and Medium Office</span>
               <span className="text-gray-400 shrink-0">({categoryCounts.smallMedium})</span>
             </button>
           </li>
