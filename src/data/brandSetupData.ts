@@ -1,0 +1,133 @@
+export type BrandId = 'hp' | 'canon' | 'brother' | 'epson';
+
+export interface BrandSetupConfig {
+  id: BrandId;
+  brandName: string;
+  brandTitle: string;
+  brandLogo: string;
+  brandLogoAlt: string;
+  logoHeightClass: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroPrinterImage: string;
+  heroPrinterAlt: string;
+  contentPrinterImage: string;
+  contentPrinterAlt: string;
+  overlayStyle: string;
+  buttonBg: string;
+  buttonHoverBg: string;
+  installText: string;
+  helpText: string;
+  showSupportLink?: boolean;
+  supportLinkText?: string;
+  sampleModels: string[];
+}
+
+export const brandSetupConfigs: Record<BrandId, BrandSetupConfig> = {
+  hp: {
+    id: 'hp',
+    brandName: 'HP',
+    brandTitle: 'HP Printer',
+    brandLogo: '/setup/hp_logo.png',
+    brandLogoAlt: 'HP Logo',
+    logoHeightClass: 'h-14 sm:h-16',
+    heroTitle: 'Set Up Your HP Printer',
+    heroSubtitle: 'Enter your HP product name and model number to get the right HP Smart software and drivers for you',
+    heroPrinterImage: '/setup/hp_hero.png',
+    heroPrinterAlt: 'HP DeskJet Printer with photo print',
+    contentPrinterImage: '/setup/hp_content.png',
+    contentPrinterAlt: 'HP Smart Tank all-in-one printer',
+    overlayStyle: 'linear-gradient(135deg, rgba(22, 53, 115, 0.92) 0%, rgba(25, 58, 123, 0.88) 100%)',
+    buttonBg: 'bg-[#007ecb]',
+    buttonHoverBg: 'hover:bg-[#006bb0]',
+    installText: 'Install HP Smart software and drivers on each mobile device or computer you want to print from. Add the printer on the new device.',
+    helpText: 'Need additional help with setup?',
+    sampleModels: [
+      'HP DeskJet 2820e All-in-One Printer',
+      'HP DeskJet 2755e All-in-One Printer',
+      'HP Smart Tank 5105 All-in-One',
+      'HP ENVY Inspire 7220e All-in-One',
+      'HP LaserJet M110w Wireless Printer'
+    ]
+  },
+  canon: {
+    id: 'canon',
+    brandName: 'Canon',
+    brandTitle: 'Canon Printer',
+    brandLogo: '/setup/canon_logo.png',
+    brandLogoAlt: 'Canon Logo',
+    logoHeightClass: 'h-9 sm:h-11',
+    heroTitle: 'Set Up Your Canon Printer',
+    heroSubtitle: 'Enter your Canon product name and model number to get the right Canon Smart software and drivers for you',
+    heroPrinterImage: '/setup/canon_hero.png',
+    heroPrinterAlt: 'Canon Pixma Black Printer',
+    contentPrinterImage: '/setup/canon_content.png',
+    contentPrinterAlt: 'Canon Maxify Multifunction Printer',
+    overlayStyle: 'linear-gradient(135deg, rgba(175, 32, 32, 0.92) 0%, rgba(145, 20, 20, 0.90) 100%)',
+    buttonBg: 'bg-[#007ecb]',
+    buttonHoverBg: 'hover:bg-[#006bb0]',
+    installText: 'Install Canon Smart software and drivers on each mobile device or computer you want to print from. Add the printer on the new device.',
+    helpText: 'Need additional help with setup? Visit Canon Support',
+    showSupportLink: true,
+    supportLinkText: 'Visit Canon Support',
+    sampleModels: [
+      'Canon PIXMA TS3522 All-in-One',
+      'Canon PIXMA TR4720 Wireless',
+      'Canon MegaTank G3270 All-in-One',
+      'Canon MAXIFY GX7020 Wireless Small Office',
+      'Canon imageCLASS MF264dw II'
+    ]
+  },
+  brother: {
+    id: 'brother',
+    brandName: 'Brother',
+    brandTitle: 'Brother Printer',
+    brandLogo: '/setup/brother_logo.png',
+    brandLogoAlt: 'Brother Logo',
+    logoHeightClass: 'h-9 sm:h-11',
+    heroTitle: 'Set Up Your brother Printer',
+    heroSubtitle: 'Enter your Brother product name and model number to get the right Brother Smart software and drivers for you',
+    heroPrinterImage: '/setup/brother_hero.png',
+    heroPrinterAlt: 'Brother Laser Compact Printer',
+    contentPrinterImage: '/setup/brother_content.png',
+    contentPrinterAlt: 'Brother Work Smart Multifunction Printer',
+    overlayStyle: 'linear-gradient(135deg, rgba(0, 28, 121, 0.90) 0%, rgba(0, 42, 145, 0.86) 100%)',
+    buttonBg: 'bg-[#007ecb]',
+    buttonHoverBg: 'hover:bg-[#006bb0]',
+    installText: 'Install Brother Smart software and drivers on each mobile device or computer you want to print from. Add the printer on the new device.',
+    helpText: 'Need additional help with setup?',
+    sampleModels: [
+      'Brother HL-L2350DW Compact Monochrome Laser',
+      'Brother MFC-J1010DW Wireless Color Inkjet',
+      'Brother HL-L3210CW Digital Color Printer',
+      'Brother MFC-L2710DW Monochrome All-in-One',
+      'Brother INKvestment Tank MFC-J4335DW'
+    ]
+  },
+  epson: {
+    id: 'epson',
+    brandName: 'Epson',
+    brandTitle: 'Epson Printer',
+    brandLogo: '/setup/epson_logo.png',
+    brandLogoAlt: 'Epson Logo',
+    logoHeightClass: 'h-8 sm:h-10',
+    heroTitle: 'Set Up Your Epson Printer',
+    heroSubtitle: 'Enter your Epson product name and model number to get the right Epson Smart software and drivers for you',
+    heroPrinterImage: '/setup/epson_hero.png',
+    heroPrinterAlt: 'Epson High-Resolution Photo Printer',
+    contentPrinterImage: '/setup/epson_content.png',
+    contentPrinterAlt: 'Epson EcoTank All-in-One Printer',
+    overlayStyle: 'linear-gradient(135deg, rgba(21, 49, 112, 0.94) 0%, rgba(15, 38, 92, 0.90) 100%)',
+    buttonBg: 'bg-[#007ecb]',
+    buttonHoverBg: 'hover:bg-[#006bb0]',
+    installText: 'Install Epson Smart software and drivers on each mobile device or computer you want to print from. Add the printer on the new device.',
+    helpText: 'Need additional help with setup?',
+    sampleModels: [
+      'Epson EcoTank ET-2800 Wireless Color',
+      'Epson EcoTank ET-4850 All-in-One Supertank',
+      'Epson Expression Home XP-4200 Wireless',
+      'Epson WorkForce Pro WF-3820 All-in-One',
+      'Epson EcoTank Pro ET-5850'
+    ]
+  }
+};

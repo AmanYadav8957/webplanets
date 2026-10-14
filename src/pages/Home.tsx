@@ -10,17 +10,19 @@ import Products from '../components/Home/Products';
 import Mission from '../components/Home/Mission';
 import FinalCta from '../components/Home/FinalCta';
 import Footer from '../components/Home/Footer';
+import type { BrandId } from '../data/brandSetupData';
 
 interface HomeProps {
   onNavigate?: (page: 'home' | 'shop') => void;
+  onSelectBrand?: (brand: BrandId) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+const Home: React.FC<HomeProps> = ({ onNavigate, onSelectBrand }) => {
   return (
     <>
       <Header onNavigate={onNavigate} currentPage="home" />
       <Hero onNavigate={onNavigate} />
-      <BrandSelection />
+      <BrandSelection onSelectBrand={onSelectBrand} />
       <Issues />
       <Services />
       <About />
