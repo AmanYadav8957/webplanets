@@ -9,7 +9,7 @@ const Mission: React.FC = () => {
             <img 
               src="https://ik.imagekit.io/eqgw1ftw6/Doctor%20Setu/Gemini_Generated_Image_2fp76h2fp76h2fp7.png" 
               alt="Operating printer" 
-              className="w-[90%] max-w-[450px] h-auto object-cover shadow-lg" 
+              className="w-[90%] max-w-[450px] h-auto object-cover shadow-lg rounded-lg" 
             />
           </div>
           <div className="text-left">

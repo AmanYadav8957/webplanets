@@ -21,7 +21,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onSelectBrand }) => {
   return (
     <>
       <Header onNavigate={onNavigate} currentPage="home" />
-      <Hero onNavigate={onNavigate} />
+      <Hero onNavigate={onNavigate} onSelectBrand={onSelectBrand} />
       <BrandSelection onSelectBrand={onSelectBrand} />
       <Issues />
       <Services />

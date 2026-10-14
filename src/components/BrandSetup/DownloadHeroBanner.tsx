@@ -121,7 +121,7 @@ const DownloadHeroBanner: React.FC<DownloadHeroBannerProps> = ({
                 <button
                   type="button"
                   onClick={onOpenModal}
-                  className="px-9 py-3.5 rounded-lg text-[15px] font-bold uppercase tracking-wider text-white bg-[#005fb8] hover:bg-[#004f9e] transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer border-none flex items-center justify-center gap-2"
+                  className="px-9 py-3.5 rounded-lg text-[15px] font-bold uppercase tracking-wider text-white bg-[#0057b8] hover:bg-[#00377d] transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer border-none flex items-center justify-center gap-2"
                 >
                   Download
                 </button>
@@ -135,7 +135,7 @@ const DownloadHeroBanner: React.FC<DownloadHeroBannerProps> = ({
               <img
                 src={config.downloadPrinterImage}
                 alt={`${config.brandName} Printer with Test Print`}
-                className="max-h-[300px] sm:max-h-[380px] w-auto object-contain drop-shadow-2xl select-none"
+                className="max-h-[300px] sm:max-h-[380px] w-auto object-contain drop-shadow-2xl rounded-lg select-none"
               />
             </div>
           </div>

@@ -40,7 +40,7 @@ const Products: React.FC = () => {
           {products.map((product, index) => (
             <div key={index} className="flex flex-col">
               <div className="mb-5 shadow-[0_15px_30px_rgba(0,0,0,0.15)] bg-white">
-                <img src={product.image} alt={product.title} className="w-full h-auto object-cover" />
+                <img src={product.image} alt={product.title} className="w-full h-auto object-cover rounded-lg" />
               </div>
               <div className="text-left">
                 <span className="block text-[13px] font-bold text-[#3d1830] mb-2">{product.category}</span>
