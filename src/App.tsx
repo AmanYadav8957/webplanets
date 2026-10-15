@@ -148,6 +148,7 @@ const App: React.FC = () => {
           <Home 
             onNavigate={navigate} 
             onSelectBrand={handleSelectBrand} 
+            onSelectProduct={handleSelectProduct}
           />
         )}
 

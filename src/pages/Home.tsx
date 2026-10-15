@@ -15,21 +15,22 @@ import type { BrandId } from '../components/BrandSetup';
 interface HomeProps {
   onNavigate?: (page: 'home' | 'shop' | 'about' | 'contact') => void;
   onSelectBrand?: (brand: BrandId) => void;
+  onSelectProduct?: (productId: string) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onNavigate, onSelectBrand }) => {
+const Home: React.FC<HomeProps> = ({ onNavigate, onSelectBrand, onSelectProduct }) => {
   return (
     <>
       <Header onNavigate={onNavigate} currentPage="home" />
       <Hero onNavigate={onNavigate} onSelectBrand={onSelectBrand} />
-      <BrandSelection onSelectBrand={onSelectBrand} />
+      <BrandSelection onNavigate={onNavigate} onSelectProduct={onSelectProduct} />
       <Issues />
       <Services />
-      <About />
-      <CtaSection />
+      <About onNavigate={onNavigate} />
+      <CtaSection onNavigate={onNavigate} />
       <Products />
       <Mission />
-      <FinalCta />
+      <FinalCta onNavigate={onNavigate} />
       <Footer onNavigate={onNavigate} />
     </>
   );

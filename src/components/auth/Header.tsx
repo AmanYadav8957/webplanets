@@ -50,9 +50,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => 
                 className={`${textColor} text-[13px] md:text-[15px] font-light uppercase tracking-wider hover:opacity-80 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0`}
               >
                 SHOP 
-                <svg width="8" height="5" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* <svg width="8" height="5" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                </svg> */}
               </button>
             </li>
             <li>
