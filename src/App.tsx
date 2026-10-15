@@ -4,6 +4,7 @@ import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import BrandSetup from './pages/BrandSetup';
 import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
 import { CartProvider, CartDrawer } from './components/Cart';
 import type { BrandId } from './components/BrandSetup';
 
@@ -52,6 +53,11 @@ const App: React.FC = () => {
       return { page: 'about' as const, id: 'hp-deskjet-2820e', brand: 'hp' as BrandId };
     }
 
+    // Contact route
+    if (hash.includes('contact')) {
+      return { page: 'contact' as const, id: 'hp-deskjet-2820e', brand: 'hp' as BrandId };
+    }
+
     // Shop route
     if (hash.includes('shop')) {
       return { page: 'shop' as const, id: 'hp-deskjet-2820e', brand: 'hp' as BrandId };
@@ -61,7 +67,7 @@ const App: React.FC = () => {
   };
 
   const initial = parseHash();
-  const [currentPage, setCurrentPage] = useState<'home' | 'shop' | 'product' | 'setup' | 'about'>(initial.page);
+  const [currentPage, setCurrentPage] = useState<'home' | 'shop' | 'product' | 'setup' | 'about' | 'contact'>(initial.page);
   const [selectedProductId, setSelectedProductId] = useState<string>(initial.id);
   const [selectedBrand, setSelectedBrand] = useState<BrandId>(initial.brand);
 
@@ -81,12 +87,14 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigate = (page: 'home' | 'shop' | 'about') => {
+  const navigate = (page: 'home' | 'shop' | 'about' | 'contact') => {
     setCurrentPage(page);
     if (page === 'shop') {
       window.location.hash = '#shop';
     } else if (page === 'about') {
       window.location.hash = '#about';
+    } else if (page === 'contact') {
+      window.location.hash = '#contact';
     } else {
       window.location.hash = '#home';
     }
@@ -130,6 +138,10 @@ const App: React.FC = () => {
           />
         ) : currentPage === 'about' ? (
           <AboutUs
+            onNavigate={navigate}
+          />
+        ) : currentPage === 'contact' ? (
+          <ContactUs
             onNavigate={navigate}
           />
         ) : (

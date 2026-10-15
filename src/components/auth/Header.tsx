@@ -2,8 +2,8 @@ import React from 'react';
 import Logo from './Logo';
 
 interface HeaderProps {
-  onNavigate?: (page: 'home' | 'shop' | 'about') => void;
-  currentPage?: 'home' | 'shop' | 'about';
+  onNavigate?: (page: 'home' | 'shop' | 'about' | 'contact') => void;
+  currentPage?: 'home' | 'shop' | 'about' | 'contact';
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => {
@@ -57,8 +57,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => 
             </li>
             <li>
               <button 
-                onClick={() => onNavigate?.('home')}
-                className={`${textColor} text-[13px] md:text-[15px] font-light uppercase tracking-wider hover:opacity-80 cursor-pointer bg-transparent border-none p-0`}
+                onClick={() => onNavigate?.('contact')}
+                className={`${currentPage === 'contact' ? 'text-[#0284c7] font-medium' : textColor} text-[13px] md:text-[15px] font-light uppercase tracking-wider hover:opacity-80 cursor-pointer bg-transparent border-none p-0`}
               >
                 CONTACT US
               </button>

@@ -10,7 +10,7 @@ import {
 } from '../components/AboutUs';
 
 interface AboutUsProps {
-  onNavigate: (page: 'home' | 'shop' | 'about') => void;
+  onNavigate: (page: 'home' | 'shop' | 'about' | 'contact') => void;
 }
 
 const AboutUs: React.FC<AboutUsProps> = ({ onNavigate }) => {

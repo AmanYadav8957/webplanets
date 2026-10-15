@@ -10,7 +10,7 @@ import { allProducts } from '../components/Shop/productsData';
 import type { SortOption } from '../components/Shop/types';
 
 interface ShopProps {
-  onNavigate: (page: 'home' | 'shop' | 'about') => void;
+  onNavigate: (page: 'home' | 'shop' | 'about' | 'contact') => void;
   onSelectProduct?: (productId: string) => void;
 }
 
