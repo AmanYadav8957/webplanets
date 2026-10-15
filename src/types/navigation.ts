@@ -14,4 +14,4 @@ export type NavPage =
   | 'shipping-policy'
   | 'sitemap';
 
-export type NavigateFunction = (page: NavPage) => void;
+export type NavigateFunction = (page: NavPage, category?: string | null) => void;

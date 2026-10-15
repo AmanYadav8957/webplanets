@@ -13,7 +13,7 @@ import Footer from '../components/Home/Footer';
 import type { BrandId } from '../components/BrandSetup';
 
 interface HomeProps {
-  onNavigate?: (page: 'home' | 'shop' | 'about' | 'contact') => void;
+  onNavigate?: (page: any, category?: string | null) => void;
   onSelectBrand?: (brand: BrandId) => void;
   onSelectProduct?: (productId: string) => void;
 }
@@ -25,10 +25,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onSelectBrand, onSelectProduct 
       <Hero onNavigate={onNavigate} onSelectBrand={onSelectBrand} />
       <BrandSelection onNavigate={onNavigate} onSelectProduct={onSelectProduct} />
       <Issues />
-      <Services />
+      <Services onNavigate={onNavigate} />
       <About onNavigate={onNavigate} />
       <CtaSection onNavigate={onNavigate} />
-      <Products />
+      <Products onNavigate={onNavigate} />
       <Mission />
       <FinalCta onNavigate={onNavigate} />
       <Footer onNavigate={onNavigate} />
