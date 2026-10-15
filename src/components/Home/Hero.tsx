@@ -64,11 +64,11 @@ const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectBrand }) => {
         {/* Ambient radial glow */}
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-sky-500/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 text-white max-w-[1200px] mx-auto w-full mt-14 px-5 md:px-8">
+        <div className="relative z-10 text-white max-w-[1200px] mx-auto w-full pt-28 sm:pt-32 md:pt-28 pb-12 sm:pb-16 px-5 md:px-8">
           {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 text-sky-200 border border-white/20 backdrop-blur-md mb-6 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-            <span>Trusted Printer Hardware, Setup &amp; Support</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-white/10 text-sky-200 border border-white/20 backdrop-blur-md mb-6 shadow-xs max-w-full">
+            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse shrink-0" />
+            <span className="truncate">Trusted Printer Hardware, Setup &amp; Support</span>
           </div>
 
           <h1 className="text-[38px] sm:text-[48px] md:text-[62px] font-black leading-[1.12] mb-5 tracking-tight">
