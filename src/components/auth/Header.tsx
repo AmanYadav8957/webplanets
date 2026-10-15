@@ -1,9 +1,11 @@
 import React from 'react';
 import Logo from './Logo';
 
+import type { NavPage } from '../../types/navigation';
+
 interface HeaderProps {
-  onNavigate?: (page: 'home' | 'shop' | 'about' | 'contact') => void;
-  currentPage?: 'home' | 'shop' | 'about' | 'contact';
+  onNavigate?: (page: NavPage | any) => void;
+  currentPage?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => {
