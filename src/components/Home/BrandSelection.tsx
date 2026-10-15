@@ -13,10 +13,10 @@ const featuredIds = [
   'hp-deskjet-2855e-all-in-one-printer',
   'hp-deskjet-2925-all-in-one-printer',
   'hp-deskjet-4355-all-in-one-printer',
-  'hp-laserjet-pro-4001dn-printer',
-  'hp-laserjet-pro-4001dw-printer',
-  'hp-laserjet-pro-4001n-printer',
-  'hp-laserjet-pro-m118dw-printer',
+  // 'hp-laserjet-pro-4001dn-printer',
+  // 'hp-laserjet-pro-4001dw-printer',
+  // 'hp-laserjet-pro-4001n-printer',
+  // 'hp-laserjet-pro-m118dw-printer',
 ];
 
 const featuredProducts = featuredIds
