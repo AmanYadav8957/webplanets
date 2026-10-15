@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'shop') => void;
+  onNavigate?: (page: 'home' | 'shop' | 'about') => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -28,7 +28,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Shop
                 </button>
               </li>
-              <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">About Us</a></li>
+              <li>
+                <button 
+                  onClick={() => onNavigate?.('about')}
+                  className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white bg-transparent border-none p-0 cursor-pointer"
+                >
+                  About Us
+                </button>
+              </li>
               <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">FAQ</a></li>
               <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">Track Orders</a></li>
               <li><a href="#" className="text-[13px] text-[#dcdcdc] transition-colors duration-300 hover:text-white">Contact Us</a></li>
@@ -58,10 +65,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
         <div className="border-t border-[rgba(255,255,255,0.1)] pt-5 text-center">
           <p className="text-[11px] text-[#b0c4de] mb-4 leading-relaxed">
-            Disclaimer: PrintExpert is an independent service provider for printers and related devices. All brand names, trademarks, and logos used on this site are for reference purposes only and belong to their respective owners.
+            Disclaimer: Pixfix digital is an independent service provider for printers and related devices. All brand names, trademarks, and logos used on this site are for reference purposes only and belong to their respective owners.
           </p>
           <p className="text-xs text-[#b0c4de]">
-            Copyright &copy; 2026 PrintExpert. All rights reserved.
+            Copyright &copy; 2026 Pixfix digital. All rights reserved.
           </p>
         </div>
       </div>

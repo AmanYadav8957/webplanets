@@ -18,7 +18,7 @@ import {
 
 interface BrandSetupProps {
   brand: BrandId;
-  onNavigate: (page: 'home' | 'shop') => void;
+  onNavigate: (page: 'home' | 'shop' | 'about') => void;
   onSelectBrand?: (brand: BrandId) => void;
   onSelectProduct?: (productId: string) => void;
 }

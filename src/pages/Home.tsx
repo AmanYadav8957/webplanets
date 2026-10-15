@@ -13,7 +13,7 @@ import Footer from '../components/Home/Footer';
 import type { BrandId } from '../components/BrandSetup';
 
 interface HomeProps {
-  onNavigate?: (page: 'home' | 'shop') => void;
+  onNavigate?: (page: 'home' | 'shop' | 'about') => void;
   onSelectBrand?: (brand: BrandId) => void;
 }
 

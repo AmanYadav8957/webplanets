@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import BrandSetup from './pages/BrandSetup';
+import AboutUs from './pages/AboutUs';
 import { CartProvider, CartDrawer } from './components/Cart';
 import type { BrandId } from './components/BrandSetup';
 
@@ -46,6 +47,11 @@ const App: React.FC = () => {
       return { page: 'product' as const, id: id || 'hp-deskjet-2820e', brand: 'hp' as BrandId };
     }
 
+    // About route
+    if (hash.includes('about')) {
+      return { page: 'about' as const, id: 'hp-deskjet-2820e', brand: 'hp' as BrandId };
+    }
+
     // Shop route
     if (hash.includes('shop')) {
       return { page: 'shop' as const, id: 'hp-deskjet-2820e', brand: 'hp' as BrandId };
@@ -55,7 +61,7 @@ const App: React.FC = () => {
   };
 
   const initial = parseHash();
-  const [currentPage, setCurrentPage] = useState<'home' | 'shop' | 'product' | 'setup'>(initial.page);
+  const [currentPage, setCurrentPage] = useState<'home' | 'shop' | 'product' | 'setup' | 'about'>(initial.page);
   const [selectedProductId, setSelectedProductId] = useState<string>(initial.id);
   const [selectedBrand, setSelectedBrand] = useState<BrandId>(initial.brand);
 
@@ -75,10 +81,12 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigate = (page: 'home' | 'shop') => {
+  const navigate = (page: 'home' | 'shop' | 'about') => {
     setCurrentPage(page);
     if (page === 'shop') {
       window.location.hash = '#shop';
+    } else if (page === 'about') {
+      window.location.hash = '#about';
     } else {
       window.location.hash = '#home';
     }
@@ -119,6 +127,10 @@ const App: React.FC = () => {
           <Shop
             onNavigate={navigate}
             onSelectProduct={handleSelectProduct}
+          />
+        ) : currentPage === 'about' ? (
+          <AboutUs
+            onNavigate={navigate}
           />
         ) : (
           <Home 

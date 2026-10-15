@@ -1,8 +1,9 @@
 import React from 'react';
+import Logo from './Logo';
 
 interface HeaderProps {
-  onNavigate?: (page: 'home' | 'shop') => void;
-  currentPage?: 'home' | 'shop';
+  onNavigate?: (page: 'home' | 'shop' | 'about') => void;
+  currentPage?: 'home' | 'shop' | 'about';
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => {
@@ -17,10 +18,16 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => 
           : 'relative bg-transparent'
       }`}
     >
-      <div className="w-full px-5 md:px-8 mx-auto flex justify-center md:justify-end items-center">
+      <div className="w-full px-5 md:px-8 mx-auto flex justify-between items-center">
+        {/* LOGO */}
+        <Logo
+          isDark={isHome}
+          onClick={() => onNavigate?.('home')}
+        />
+
         {/* NAV */}
         <nav className="w-full md:w-auto">
-          <ul className="flex flex-wrap justify-center md:justify-end list-none gap-4 md:gap-8 items-center m-0 p-0 w-full">
+          <ul className="flex flex-wrap justify-end list-none gap-4 md:gap-8 items-center m-0 p-0 w-full">
             <li>
               <button 
                 onClick={() => onNavigate?.('home')}
@@ -31,8 +38,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => 
             </li>
             <li>
               <button 
-                onClick={() => onNavigate?.('home')}
-                className={`${textColor} text-[13px] md:text-[15px] font-light uppercase tracking-wider hover:opacity-80 cursor-pointer bg-transparent border-none p-0`}
+                onClick={() => onNavigate?.('about')}
+                className={`${currentPage === 'about' ? 'text-[#0284c7] font-medium' : textColor} text-[13px] md:text-[15px] font-light uppercase tracking-wider hover:opacity-80 cursor-pointer bg-transparent border-none p-0`}
               >
                 ABOUT US
               </button>
