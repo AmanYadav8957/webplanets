@@ -81,6 +81,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
         {/* 4. TABS & SPECIFICATIONS TABLE */}
         <ProductSpecsTable
+          productId={product.id}
           specifications={product.specifications}
           productTitle={product.title}
         />

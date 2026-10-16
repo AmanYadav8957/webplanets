@@ -88,13 +88,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage = 'home' }) => 
           </ul>
 
           {/* Direct CTA button for desktop */}
-          <button
+          {/* <button
             onClick={() => handleNav('shop')}
             className="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider bg-[#0284c7] hover:bg-[#0369a1] text-white px-4 py-2.5 rounded-lg transition-colors cursor-pointer border-none shadow-sm"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Store</span>
-          </button>
+          </button> */}
         </nav>
 
         {/* MOBILE HAMBURGER BUTTON (Visible only on mobile screens < 768px) */}
