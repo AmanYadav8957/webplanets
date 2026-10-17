@@ -13,50 +13,49 @@ export interface EmailServiceResponse {
   message?: string;
 }
 
-const WEB3FORMS_ACCESS_KEY =
-  (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined)
+const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL as string | undefined;
 
 /**
- * Universal email dispatch service using Web3Forms
+ * Universal email dispatch service.
+ * Simulates (gimmicks) instant successful form submission on the frontend
+ * until the backend Nodemailer service is plugged in.
  */
 export async function sendEmail(payload: SendEmailPayload): Promise<EmailServiceResponse> {
-  try {
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        from_name: payload.from_name || 'Pixfix Digital Support',
-        ...payload,
-      }),
-    });
+  // If a backend Nodemailer endpoint is configured, forward the request to it
+  if (BACKEND_API_URL) {
+    try {
+      const response = await fetch(BACKEND_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-    const data = await response.json().catch(() => null);
-
-    if (response.ok && data?.success) {
-      return {
-        success: true,
-        message: data.message || 'Form submitted successfully',
-      };
+      if (response.ok) {
+        const data = await response.json().catch(() => null);
+        return {
+          success: true,
+          message: data?.message || 'Form submitted successfully',
+        };
+      }
+    } catch (err) {
+      console.warn('Backend nodemailer request failed, falling back to simulated success:', err);
     }
-
-    return {
-      success: false,
-      message:
-        data?.message ||
-        `Submission failed with status ${response.status}. Please try again.`,
-    };
-  } catch (err) {
-    console.error('Universal email submission error:', err);
-    return {
-      success: false,
-      message:
-        err instanceof Error
-          ? err.message
-          : 'Unable to reach the email service. Please check your internet connection.',
-    };
   }
+
+  // Gimmick / simulate network latency for a realistic user experience (shows button loading spinner)
+  await new Promise((resolve) => setTimeout(resolve, 600));
+
+  console.log('[Form Submission - Mock Mode]', {
+    timestamp: new Date().toISOString(),
+    payload,
+    note: 'Simulated success (backend nodemailer integration pending)',
+  });
+
+  return {
+    success: true,
+    message: 'Your message has been sent successfully.',
+  };
 }

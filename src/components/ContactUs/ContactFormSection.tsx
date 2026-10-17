@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Clock, AlertCircle, Loader2, Send } from 'lucide-react';
 import { sendEmail } from '../../services/emailService';
+import { trackContactConversion } from '../../services/analytics';
 
 const ContactFormSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +40,7 @@ const ContactFormSection: React.FC = () => {
 
     if (result.success) {
       setIsSubmitted(true);
+      trackContactConversion();
       setFormData({
         name: '',
         subject: '',

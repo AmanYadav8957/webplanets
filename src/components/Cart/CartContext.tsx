@@ -182,7 +182,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         updateQuantity,
         removeFromCart,
         clearCart,
-        appliedCoupon: null,
+        appliedCoupon,
         applyCoupon,
         removeCoupon,
         subtotal,
