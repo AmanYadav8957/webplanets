@@ -13,6 +13,7 @@ import RefundReturn from './pages/RefundReturn';
 import WarrantyInfo from './pages/WarrantyInfo';
 import ShippingPolicy from './pages/ShippingPolicy';
 import Sitemap from './pages/Sitemap';
+import Checkout from './pages/Checkout';
 import { CartProvider, CartDrawer } from './components/Cart';
 import type { BrandId } from './components/BrandSetup';
 import type { NavPage } from './types/navigation';
@@ -104,6 +105,11 @@ const App: React.FC = () => {
     // Contact route
     if (hash.includes('contact')) {
       return { page: 'contact', id: 'hp-deskjet-2820e', brand: 'hp', category: null };
+    }
+
+    // Checkout route
+    if (hash.includes('checkout')) {
+      return { page: 'checkout', id: 'hp-deskjet-2820e', brand: 'hp', category: null };
     }
 
     // Shop route with optional category filter
@@ -247,6 +253,10 @@ const App: React.FC = () => {
             onNavigate={navigate}
             onSelectBrand={handleSelectBrand}
           />
+        ) : currentPage === 'checkout' ? (
+          <Checkout
+            onNavigate={navigate}
+          />
         ) : (
           <Home 
             onNavigate={navigate} 
@@ -259,6 +269,7 @@ const App: React.FC = () => {
         <CartDrawer
           onNavigateToProduct={handleSelectProduct}
           onNavigateToShop={() => navigate('shop')}
+          onNavigateToCheckout={() => navigate('checkout')}
         />
       </div>
     </CartProvider>

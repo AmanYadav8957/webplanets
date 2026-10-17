@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Clock } from 'lucide-react';
+import { CheckCircle2, Clock, AlertCircle, Loader2, Send } from 'lucide-react';
+import { sendEmail } from '../../services/emailService';
+import { trackContactConversion } from '../../services/analytics';
 
 const ContactFormSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,27 +13,43 @@ const ContactFormSection: React.FC = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errorMessage) setErrorMessage(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.subject) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setErrorMessage(null);
+
+    const result = await sendEmail({
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      from_name: 'Pixfix Digital Contact Form',
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
       setIsSubmitted(true);
+      trackContactConversion();
       setFormData({
         name: '',
         subject: '',
         email: '',
         message: '',
       });
-    }, 700);
+    } else {
+      setErrorMessage(result.message || 'Something went wrong while sending your message. Please try again.');
+    }
   };
 
   return (
@@ -70,11 +88,14 @@ const ContactFormSection: React.FC = () => {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Message Received!</h3>
                   <p className="text-gray-600 text-sm max-w-md mx-auto mb-6">
-                    Thank you for reaching out to Pixfix Digital. Our support team will review your query and respond shortly.
+                    Thank you for reaching out to Pixfix Digital. Our support team will review your query and respond to your email shortly.
                   </p>
                   <button
                     type="button"
-                    onClick={() => setIsSubmitted(false)}
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setErrorMessage(null);
+                    }}
                     className="bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs uppercase font-bold tracking-wider px-6 py-2.5 rounded-lg transition-colors cursor-pointer border-none"
                   >
                     Send Another Message
@@ -82,6 +103,26 @@ const ContactFormSection: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {errorMessage && (
+                    <div className="flex items-start gap-3 p-3.5 bg-red-50 border border-red-200 text-red-700 rounded-lg text-xs sm:text-sm">
+                      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-500" />
+                      <div className="flex-1">
+                        <p className="font-semibold">Unable to send message</p>
+                        <p className="text-red-600 text-xs mt-0.5">{errorMessage}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Honeypot field for anti-spam (invisible to normal users) */}
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    className="hidden"
+                    style={{ display: 'none' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+
                   <div>
                     <input
                       type="text"
@@ -133,9 +174,19 @@ const ContactFormSection: React.FC = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-block bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer border-none disabled:opacity-60"
+                      className="inline-flex items-center justify-center gap-2 bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer border-none disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>SENDING...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>SEND MESSAGE</span>
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>

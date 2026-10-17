@@ -12,6 +12,7 @@ export type NavPage =
   | 'refund-return'
   | 'warranty-info'
   | 'shipping-policy'
-  | 'sitemap';
+  | 'sitemap'
+  | 'checkout';
 
 export type NavigateFunction = (page: NavPage, category?: string | null) => void;
